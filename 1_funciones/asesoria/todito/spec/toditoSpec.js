@@ -1,8 +1,8 @@
 describe("todito", function () {
   describe("Lanzar dado", function () {
     it("devuelve un número entre 1 y 6", function () {
-      expect(lanzarDado()).toBeGreaterThan(0);
-      expect(lanzarDado()).toBeLessThan(7);
+      expect(lanzarDado() >= 1).toBeTruthy();
+      expect(lanzarDado() <= 6).toBeTruthy();
     });
   });
   describe("Definir castigo", function () {
