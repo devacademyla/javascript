@@ -29,6 +29,9 @@ function Cubilete() {
   this.getResultados = function () {
     return resultados;
   };
+  this.getDados = function () {
+    return dados;
+  };
 }
 
 function Tortuga() {
@@ -39,24 +42,21 @@ function Tortuga() {
     caparazon: 0,
     patas: 0
   };
+  this.evaluar = evaluar;
 
   function evaluar(arrResultados) {
     var i = 0;
-    console.log(arrResultados);
     for (i; i < arrResultados.length; i++) {
       if (jugadaFinal.caparazon === 1) {
         if (arrResultados[i] === 1) {
           jugadaFinal.patas++;
           numDados--;
         }
-      } else {
-        if (arrResultados[i] === 6) {
-          jugadaFinal.caparazon++;
-          numDados--;
-        }
+      } else if (arrResultados[i] === 6) {
+        jugadaFinal.caparazon++;
+        numDados--;
       }
     }
-    console.log(jugadaFinal);
   }
 
   this.jugar = function () {
@@ -70,7 +70,7 @@ function Tortuga() {
     }
   };
 
-  this.obtenerResultado = function () {
+  this.getResultado = function () {
     return "Obtuviste " + jugadaFinal.caparazon + " caparazon y " + jugadaFinal.patas + " patas en " + (3 - numJugadas) + "/3 jugadas";
   };
 }
