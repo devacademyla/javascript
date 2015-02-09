@@ -11,13 +11,14 @@ describe("todito", function () {
       expect(definirCastigo(5)).toEqual("Toman todos");
     });
     it("2 o 6: Toma otro", function () {
-
+      expect(definirCastigo(2)).toEqual("Toma otro");
+      expect(definirCastigo(6)).toEqual("Toma otro");
     });
     it("3: Toma el de mi derecha", function () {
-
+      expect(definirCastigo(3)).toEqual("Toma el de mi derecha");
     });
     it("4: Toma el de mi izquierda", function () {
-
+      expect(definirCastigo(4)).toEqual("Toma el de mi izquierda");
     });
   });
 });
