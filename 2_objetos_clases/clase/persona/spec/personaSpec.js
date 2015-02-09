@@ -6,6 +6,12 @@ describe("Persona", function () {
   });
 
   it("tiene propiedad nombre", function () {
+    var persona = new Persona();
+    persona.nombre = "Lennon";
+    expect(persona.nombre).toEqual("Lennon");
+  });
+
+  it("acepta el nombre en el constructor", function () {
     var persona = new Persona("Lennon");
     expect(persona.nombre).toEqual("Lennon");
   });
