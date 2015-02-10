@@ -1,4 +1,4 @@
-describe("todito", function () {
+describe("Todito", function () {
   describe("Lanzar dado", function () {
     it("devuelve un número entre 1 y 6", function () {
       expect(lanzarDado() >= 1).toBeTruthy();

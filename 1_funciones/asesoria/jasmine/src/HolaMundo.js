@@ -1,3 +1,3 @@
-function holaMundo() {
+function saludar() {
   return "Hola Mundo!";
 }
