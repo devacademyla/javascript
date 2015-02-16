@@ -2,7 +2,7 @@ describe("Persona", function () {
 
   it("tiene constructor", function () {
     var persona = new Persona();
-    expect(persona).toEqual(jasmine.any(Persona))
+    expect(persona).toEqual(jasmine.any(Persona));
   });
 
   it("tiene propiedad nombre", function () {
