@@ -9,28 +9,71 @@ function Dado() {
 }
 
 function Todito() {
-  this.jugar = function () {
-    var dado = new Dado();
-
-    dado.lanzar();
-    definirCastigo(dado.resultado);
-  };
-  
+  var castigo = "";
   var definirCastigo = function (n) {
     switch (n) {
       case 1:
       case 5:
-        console.log("Toman todos");
+        castigo = "Toman todos";
         break;
       case 2:
       case 6:
-        console.log("Toma otro");
+        castigo = "Toma otro";
         break;
       case 3:
-        console.log("Toma el de mi derecha");
+        castigo = "Toma el de mi derecha";
         break;
       case 4:
-        console.log("Toma el de mi izquierda");
+        castigo = "Toma el de mi izquierda";
+        break;
+    }
+  };
+  this.jugar = function () {
+    var dado = new Dado();
+    dado.lanzar();
+    definirCastigo(dado.resultado);
+  };
+  this.getCastigo = function () {
+    return castigo;
+  };
+}
+
+function Jugador() {
+  var shots = 0;
+  this.tomarShot = function () {
+    shots++;
+  };
+  this.estaEbrio = function () {
+    return shots === 10;
+  };
+  this.getShots = function () {
+    return shots;
+  };
+}
+
+function Juego(numJugadores) {
+  this.jugadores = [];
+  var i = 0;
+  var j = 0;
+  var todito = new Todito();
+  for (i; i < numJugadores; i++) {
+    this.jugadores[i] = new Jugador();
+  }
+
+  this.aplicarCastigo = function (castigo, index) {
+    switch (castigo) {
+      case "Toman todos":
+        for (j; j < this.jugadores.length; j++) {
+          this.jugadores[j].tomarShot();
+        }
+        break;
+      case "Toma otro":
+        break;
+      case "Toma el de mi derecha":
+        index === this.jugadores.length - 1 ? this.jugadores[0].tomarShot() : this.jugadores[index+1].tomarShot();
+        break;
+      case "Toma el de mi izquierda":
+        index === 0 ? this.jugadores[this.jugadores.length - 1].tomarShot() : this.jugadores[index-1].tomarShot();
         break;
     }
   };
